@@ -40,6 +40,14 @@ class NotesScreen extends ConsumerWidget {
                 ),
                 backgroundColor: Colors.transparent,
                 elevation: 0,
+                actions: <Widget>[
+                  IconButton(
+                    icon: const Icon(Icons.logout),
+                    onPressed: () async {
+                      await Supabase.instance.client.auth.signOut();
+                    },
+                  ),
+                ],
               ),
               body: notesState.when(
                 loading: () => const Center(child: CircularProgressIndicator()),
